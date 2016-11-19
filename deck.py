@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import numpy as np
 import random
 import itertools
 
@@ -13,7 +14,6 @@ class Deck:
             Resets the deck
         """
         self.deck = ["".join(x) for x in list(itertools.product(cards, suits))]
-
 
     def __init__():
         reset()
@@ -73,3 +73,15 @@ class Deck:
             made public after the fourth street
         """
         return serve(1)
+
+    def encode_card(_c):
+        """
+            Returns the encoded version of the card as a numpy ndarray
+        """
+        assert(len(_c) == 2)
+        _temp = np.zeroes((17, 17))
+        # Note, ideally a matrix of shape (4, 13) should suffice
+        # But zero-padding to 17x17 helps with convolutions and max pooling
+        # (According to the paper, and also the referenced work by Clark and Storkey 2014)
+        _temp[self.suits.index(_c[1]), self.cards.index(_c_[0])] = 1
+        return _temp
